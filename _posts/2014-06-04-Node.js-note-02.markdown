@@ -1,13 +1,11 @@
 ---
 layout: post
-title:  "Node.js学习笔记02－使用Express构建网站01"
+title:  "Node.js学习笔记02－Http的响应操作"
 date:   2014-06-04 22:27:00
 categories: 工匠梦
 tags: [Node.js]
 ---
 第3章和第4章主要介绍了Node.js的一些基本思想，例如Node.js是异步执行的，基本以执行，回调为主等等。  
-
-##Http的响应操作
 
 01这篇笔记里介绍了如何使用Node.js构建一个服务器，让我们请求之后可以返回”Hello World“。接下来要介绍一下，如何用Node.js来完成一些Http的基本操作。
 
@@ -32,9 +30,9 @@ tags: [Node.js]
 		'Connection':'keep-alive'
 	});  
 
-2.重定向
-我们可以用301的http状态码让服务器重重定向，跳转到另外一个网址上去。
-就像这样。
+2.重定向  
+我们可以用301的http状态码让服务器重重定向，跳转到另外一个网址上去。  
+就像这样。  
 
 	var http = require('http');
 	http.createServer(function (req, res){
@@ -42,11 +40,12 @@ tags: [Node.js]
 		res.end('Hello world');
 	}).listen(3000, "127.0.0.1");
 
-3.上面的代码都只能响应单一的请求，能不能让Node.js响应多个请求呢？当然可以。
+3.用Node.js完成路由功能。  
+上面的代码都只能响应单一的请求，能不能让Node.js响应多个请求呢？当然可以。  
 
-Node.js的URL模组可以让我们很方便的解析请求来的URL。
+Node.js的URL模组可以让我们很方便的解析请求来的URL。  
 只要这样  
-`var pathname = url.parse(req.url).pathname;`，我们就能取到请求的路径了。我们可以根据用户请求的路径不同，让服务器做出不同的动作。
+`var pathname = url.parse(req.url).pathname;`，我们就能取到请求的路径了。我们可以根据用户请求的路径不同，让服务器做出不同的动作。  
 
 
 	var http = require('http');
