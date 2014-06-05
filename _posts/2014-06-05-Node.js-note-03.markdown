@@ -1,0 +1,112 @@
+---
+layout: post
+title:  "Node.js 学习笔记03－使用Express"
+date:   2014-06-05 21:26:50
+categories: 工匠梦
+tags: [Node.js]
+---
+
+Express是一个轻量级的Web框架，用了它，我们就可以很快速的开发出来简单的网站。
+
+##安装Express
+
+Express的安装很简单。在命令行里输入以下指令就可以了。
+
+	$ npm install -g express   
+	
+如果输入指令之后，报错。可以加上`sodu`试试，很有可能就是权限的问题。
+
+##创建Express的基本网站
+
+打开命令行，并输入`$ express express_example`，就会在本地目录下，生成一个Express的文件夹。
+我们会看到，输完命令后，会产生下面的日志。
+
+	create : express_example  //网站的文件夹
+	create : express_example/package.json  //该项目的依赖包
+	create : express_example/app.js    //主要逻辑文件
+	create : express_example/public	 //存放网站服务需要提供的资源
+	create : express_example/public/javascripts
+	create : express_example/public/images
+	create : express_example/public/stylesheets
+	create : express_example/public/stylesheets/style.css
+	create : express_example/routes  //路由文件
+	create : express_example/routes/index.js  
+	create : express_example/routes/users.js
+	create : express_example/views  //视图文件，使用的是jade模板
+	create : express_example/views/index.jade
+	create : express_example/views/layout.jade
+	create : express_example/views/error.jade
+	create : express_example/bin  //执行根目录
+	create : express_example/bin/www
+	  // Express很贴心的提醒我们，不要忘了安装相关的依赖模块
+	install dependencies:
+		$ cd express_example && npm install
+	  // 使用这种方式运行我们写的软件
+	run the app:
+		$ DEBUG=express_example ./bin/www
+		
+输完上面提示的两条命令后，我们就成功的利用Node.js建立了一个网站。
+
+##Jade的介绍
+我们在上面的日志中，看到有几个Jade文件。Jade是一种模板引擎。Express利用Jade来完成对HTML文件的渲染。  
+[jade-lang.com](http://jade-lang.com/)  
+[Jade模板引擎入门教程](http://www.csser.com/board/4f3f516e38a5ebc978000508)  
+我们可以通过以上文章来了解关于Jade的具体内容。
+
+##为Express指定路由
+
+路由告诉了服务器，如果用户发来不同的请求，应该怎么样处理。  
+下面分别是get请求和post请求的路由方式。  
+	
+	var app = express();
+	// get 请求路由方式
+	app.get('/about',function(req,res){
+    	res.send('I\'m about.');
+	});
+	// post 请求路由方式
+	app.post('/', function(req, res){
+    	res.send(req.body);
+	});
+
+当然我们也可以在路由中使用参数。就像这样。
+	
+	app.get('/users/:id',function(req,res){
+    	res.send('show content for user id '+req.params.id);
+	);
+	
+但是在实际开发过程中，不允许我们把所有的路由表，都写在一个文件里。这就要求我们对路由表，要做出相应的配置和管理。  
+Express为我们提供的类似的操作。
+
+首先我们要声明一个路由，就像这样。
+
+	var express = require('express');
+	var router = express.Route();	
+	/* GET home page. */
+	router.get('/', function(req, res) {
+		res.render('index', { title: 'Express' });
+	});
+	module.exports = router;
+	  
+然后我们把这个文件保存为index.js，并放在/routes的文件目录下。
+
+然后我们在app.s 文件中拿到这个路由，`var routes = require('./routes/index');`。  
+最后我们在路由表中指定使用这个路由，`app.use('/', routes);`。
+这样以后有直接请求网站根目录的动作，就会用我们声明的路由了。  
+
+##视图渲染
+`res.render('index', { title: 'Express' });`这句代码的意思是我们渲染views里面的index.jade文件，然后把文件的标题设置为Express。
+当然渲染视图时，我们也可以加一些本地变量进去。
+
+比如这样：
+	
+	router.get('/1', function(req, res) {
+	var user = {
+    	first_name:'Lord',
+    	surname:'Lucan',
+    	address:'I\'m not telling',
+    	facebook_friends:'1356200'
+    	};
+    	res.render('index.jade',{title:'User', user:user});
+	});
+	
+然后在index.jade文件里，直接使用`user.first_name`即可把前面声明的first_name取出来，放到页面上。
