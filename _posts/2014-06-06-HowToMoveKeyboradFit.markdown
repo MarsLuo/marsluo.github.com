@@ -10,4 +10,6 @@ tags: [iOS]
 
 [How to make a UITextField move up when keyboard is present](http://stackoverflow.com/questions/1126726/how-to-make-a-uitextfield-move-up-when-keyboard-is-present)
 
+[KeyboardManagement by Apple](https://developer.apple.com/library/ios/documentation/StringsTextFonts/Conceptual/TextAndWebiPhoneOS/KeyboardManagement/KeyboardManagement.html)
+
 上面这问题，很多事情都讲得很清楚了。有时间的话，我整理下，上面这篇回答吧。
