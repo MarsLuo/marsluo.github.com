@@ -94,7 +94,7 @@ Express为我们提供的类似的操作。
 这样以后有直接请求网站根目录的动作，就会用我们声明的路由了。  
 
 ##视图渲染
-`res.render('index', { title: 'Express' });`这句代码的意思是我们渲染views里面的index.jade文件，然后把文件的标题设置为Express。
+`res.render('index', { title: 'Express' });`这句代码的意思是我们渲染views里面的index.jade文件，然后把文件的标题设置为Express。  
 当然渲染视图时，我们也可以加一些本地变量进去。
 
 比如这样：
@@ -107,6 +107,6 @@ Express为我们提供的类似的操作。
     	facebook_friends:'1356200'
     	};
     	res.render('index.jade',{title:'User', user:user});
-	});
+	});  
 	
 然后在index.jade文件里，直接使用`user.first_name`即可把前面声明的first_name取出来，放到页面上。
