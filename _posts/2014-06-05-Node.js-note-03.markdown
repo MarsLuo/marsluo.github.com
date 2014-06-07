@@ -89,8 +89,10 @@ Express为我们提供的类似的操作。
 	  
 然后我们把这个文件保存为index.js，并放在/routes的文件目录下。
 
-然后我们在app.s 文件中拿到这个路由，`var routes = require('./routes/index');`。  
-最后我们在路由表中指定使用这个路由，`app.use('/', routes);`。
+然后我们在app.s 文件中拿到这个路由：  
+`var routes = require('./routes/index');`。  
+最后我们在路由表中指定使用这个路由：  
+`app.use('/', routes);`。  
 这样以后有直接请求网站根目录的动作，就会用我们声明的路由了。  
 
 ##视图渲染
