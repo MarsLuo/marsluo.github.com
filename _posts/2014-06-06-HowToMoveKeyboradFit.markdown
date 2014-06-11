@@ -68,3 +68,5 @@ tags: [iOS]
 
 	[self.view endEditing:YES];
 	
+	
+我们也可以参考苹果的相关[例程](https://developer.apple.com/library/ios/samplecode/KeyboardAccessory/Introduction/Intro.html)。
