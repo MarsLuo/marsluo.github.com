@@ -15,10 +15,11 @@ tags: [iOS]
 jason的demo为：
 
 	NSURL *url = [[NSBundle mainBundle] URLForResource:@"text" withExtension:@"html"];
-    NSAttributedString *attrStr = [[NSAttributedString alloc]
-                                   initWithFileURL:url
-                                   options:@{NSDocumentTypeDocumentAttribute:NSHTMLTextDocumentType}
-                                   documentAttributes:nil error:nil];
+    NSAttributedString *attrStr = 
+    [[NSAttributedString alloc]
+    	initWithFileURL:url 
+    	options:@{NSDocumentTypeDocumentAttribute:NSHTMLTextDocumentType}
+    	documentAttributes:nil error:nil];
     [_textView setAttributedText:attrStr];
 
 
@@ -66,13 +67,19 @@ HTML文件为：
 
 加上`file://`就可以正常显示了。
 
-	NSString *path = [[NSBundle mainBundle] pathForResource:@"expression_first_1@2x" ofType:@"png"];
+	NSString *path = 
+	[[NSBundle mainBundle] pathForResource:@"expression_first_1@2x" ofType:@"png"];
     path = [NSString stringWithFormat:@"file://%@",path];
     
-    NSString *dataString =     [NSString stringWithFormat:@"<meta charset=\"UTF-8\">我右边的是图片:<img src=\"%@\" height=\"15\" width=\"15\"/>:我左边的也是图片", path];
+    NSString *dataString = 
+    [NSString stringWithFormat:
+    @"<meta charset=\"UTF-8\">我右边的是图片:"
+     "<img src=\"%@\" height=\"15\" width=\"15\"/>:"
+     "我左边的也是图片", path];
 
-    NSAttributedString *attrStr = [[NSAttributedString alloc]
-                   initWithData:[dataString dataUsingEncoding:NSUTF8StringEncoding]
-                   options:@{NSDocumentTypeDocumentAttribute:NSHTMLTextDocumentType}
-                   documentAttributes:nil error:nil];
+    NSAttributedString *attrStr = 
+    [[NSAttributedString alloc]
+    initWithData:[dataString dataUsingEncoding:NSUTF8StringEncoding]
+    options:@{NSDocumentTypeDocumentAttribute:NSHTMLTextDocumentType}
+    documentAttributes:nil error:nil];
 
