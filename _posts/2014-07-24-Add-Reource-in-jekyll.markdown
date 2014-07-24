@@ -15,9 +15,9 @@ tags: [Jekyll]
 
 以下[文字](http://jekyllrb.com/docs/posts/)翻译自Jekyll官网的文档里。 
 
-	有时候，有可能我们会想在文章里加上图片，下载或者别的数据资源。虽然在Markdown和Textile中，可能链接这些资源的语法不同，但是哪里能让我们存放这些资源，却是我们需要共同面对的问题。
+有时候，有可能我们会想在文章里加上图片，下载或者别的数据资源。虽然在Markdown和Textile中，可能链接这些资源的语法不同，但是哪里能让我们存放这些资源，却是我们需要共同面对的问题。
 	
-	但是因为Jekyll的灵活性，我们有很多解决方案可以做到这一点。一个常见的解决方案就是在你网站的根目录下，创建一个文件夹，比如叫assets或者downloads，用来放你的图片，下载文件或者其他资源。现在，我们可以从你的所有文章里读取你这些根路径下的资源了。这个依赖于你网站和根域名是如何配置的，不过下面有个例子，来告诉我们，如何在Markdown里面使用site.url这个变量。
+但是因为Jekyll的灵活性，我们有很多解决方案可以做到这一点。一个常见的解决方案就是在你网站的根目录下，创建一个文件夹，比如叫assets或者downloads，用来放你的图片，下载文件或者其他资源。现在，我们可以从你的所有文章里读取你这些根路径下的资源了。这个依赖于你网站和根域名是如何配置的，不过下面有个例子，来告诉我们，如何在Markdown里面使用site.url这个变量。
  
 有兴趣的可以直接看原文。  
 
@@ -30,7 +30,7 @@ Because of Jekyll’s flexibility, there are many solutions to how to do this. O
 Including an image asset in a post:
 	
 	… which is shown in the screenshot below:
-	![My helpful screenshot]({{ site.url }}/assets/screenshot.jpg)
+	![My helpful screenshot]({{ site.url }}/assets/screenshot.jpg)  
 Linking to a PDF for readers to download:
 	
 	… you can [get the PDF]({{ site.url }}/assets/mydoc.pdf) directly.
