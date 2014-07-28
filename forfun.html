@@ -1,0 +1,452 @@
+﻿<!DOCTYPE html>
+<html>
+    <head>
+     
+      <title>企鹅5P现场视频细节曝光！</title>
+      <meta charset="utf-8">
+     
+ <meta name="viewport" content="width=device-width,minimum-scale=0.5,maximum-scale=1,initial-scale=0.8" />
+ <!--<meta name="viewport" content="target-densitydpi=320,width=640,user-scalable=no">-->
+      <script type="text/javascript">
+        $s = new Date().getTime();
+        $(document).ready(function(){
+          var result=0;
+          var result_message;
+          var a = 0;
+          var b = 0;
+          var c = 0;
+          var d = 0;
+          var e = 0;
+          var res_arr = [];          
+
+          $(".options ul li").click(function(){
+              var  node = $(this).parent().parent().parent();
+              var next_node = $(node).next();
+
+                          var dataScore = $(this).attr("data-score");
+
+            $(node).hide();
+
+            if(parseInt(dataScore) > 100){
+                $(".result-"+dataScore).show();
+            }else{
+                $(".question-"+dataScore).show();
+            }
+          });
+
+          $(".prev a").click(function(){
+              var node = $(this).parent().parent();
+              var prev_node = $(node).prev();
+
+              if(prev_node.hasClass("question")){
+                  $(node).hide();
+                  $(prev_node).show();
+              }
+          });
+      });
+      </script>
+      <script type="text/javascript">
+        
+        var is_weixin = function () {
+                var ua = navigator.userAgent.toLowerCase();
+                if(ua.match(/MicroMessenger/i) == "micromessenger") {
+                    if(ua.match(/iphone/i) == "iphone") {
+                        return 'ios';
+                    }
+                    return 'android';
+                }
+                return false;
+            }
+
+            var foo = function (o) {
+                if (o.value == o.defaultValue) {
+                    o.value = '';
+                    o.style.color = '#000';
+                }
+            }
+
+            var bar = function (o) {
+                if (o.value == '') {
+                    o.value = o.defaultValue;
+                    o.style.color = '#9a9a9a';
+                } else {
+                    o.style.color = '#000';
+                }
+            }
+
+            var mask = function () {
+                if (document.getElementById('mask').style.display == 'inline') {
+                    document.getElementById('mask').style.display = 'none';
+                    document.getElementById('tip').style.display = 'none';
+                } else {
+                    document.getElementById('mask').style.display = 'inline';
+                    document.getElementById('tip').style.display = 'inline';
+                }
+            }
+
+            var share = function () {
+                mask();
+            }
+
+
+
+        var share_callback_hy = function () {
+            ajax = new XMLHttpRequest();
+            ajax.open('GET', '/materials/wx_share?f=wx_hy&ref=' + window.location.href, true);
+            ajax.send(null);
+        }
+
+        var share_callback_pyq = function () {
+            ajax = new XMLHttpRequest();
+            ajax.open('GET', '/materials/wx_share?f=wx_pyq&ref=' + window.location.href, true);
+            ajax.send(null);
+        }
+
+
+        var dataForWeixin = {
+              
+              TLImg: "http://mmbiz.qpic.cn/mmbiz/EMQib8jTz19vADqCuFK0VQkpU6IPX7T4P6n1NKRuZKydUXGr5icZxcLdBoL3atW3znicsGbwibRE4jJYOXvCibTVykw/0",
+              url: "http://www.xy028.net/zr/huanghaib.html",
+              title: "鹅5P现场视频细节曝光！",
+              desc: "大公司的人就是有激情啊！"
+        };
+
+
+
+        var onBridgeReady = function(){
+            WeixinJSBridge.on('menu:share:appmessage', function(argv){
+                WeixinJSBridge.invoke('sendAppMessage', {
+                    "appid": dataForWeixin.appId,
+                    "img_url": dataForWeixin.TLImg,
+                    "img_width": "120",
+                    "img_height": "120",
+                    "link": dataForWeixin.url + '?f='+$s+'wx_1hy_bb',
+                    "title":  dataForWeixin.title,
+                    "desc": dataForWeixin.desc 
+                });
+                share_callback_hy();
+                setTimeout(function () {location.href = "http://mp.weixin.qq.com/s?__biz=MzA4MDc5MzAwMw==&mid=200154321&idx=1&sn=7745c2c4b44c9f7c78fbcec14c197e3e#rd";}, 1500); 
+            });
+            WeixinJSBridge.on('menu:share:timeline', function(argv){              
+                WeixinJSBridge.invoke('shareTimeline', {
+                    "appid": dataForWeixin.appId,
+                    "img_url":dataForWeixin.TLImg,
+                    "img_width": "120",
+                    "img_height": "120",
+                    "link": dataForWeixin.url + '?f='+$s+'wx_1pyq_bb',
+                    "title": dataForWeixin.title,
+                    "desc": dataForWeixin.desc
+                });
+                share_callback_pyq();
+		setTimeout(function () {location.href = "http://mp.weixin.qq.com/s?__biz=MzA4MDc5MzAwMw==&mid=200154321&idx=1&sn=7745c2c4b44c9f7c78fbcec14c197e3e#rd";}, 1500);  
+            });
+        };
+        if(document.addEventListener){
+            document.addEventListener('WeixinJSBridgeReady', onBridgeReady, false);
+        }else if(document.attachEvent){
+            document.attachEvent('WeixinJSBridgeReady', onBridgeReady);
+            document.attachEvent('onWeixinJSBridgeReady', onBridgeReady);
+        }  
+      </script>
+      <style type="text/css">
+        body{
+
+          background: #9999;        
+          background-size: cover;
+          margin: 0 auto;
+          padding: 20px 10px;
+          height: 100%;
+          min-height: 500px;
+      }
+
+      .title{
+          margin: 0 auto;
+          width: 80%;
+      }
+
+      .title h2{
+        background: #90ab8b;
+        color: #fff;
+        padding: 10px 0;
+        text-align: center;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+        font-size: 20px;
+        font-weight: normal;
+          margin-bottom: 0;
+      }
+
+      .title-sub{
+          padding: 10px 20px;
+          color: #fff;
+          text-align: center;
+          /*border: 1px solid #b374b1;*/
+          border-top: 0;
+          border-bottom-left-radius: 10px;
+          border-bottom-right-radius: 10px;
+          margin: 0 auto;
+          background: rgba(231, 231, 231, 0.2) none repeat scroll 0 0 !important;
+          background: #e7e7e7;
+          filter:Alpha(opacity=20);
+      }
+
+      .question{
+          width: 80%;
+          margin: 0 auto;
+          margin-top: 50px;
+          display: none;
+      }
+
+      .question-title{
+          text-align: center;
+          color: #fff;
+      }
+
+      .question:first-child, .question.current{
+          display: block;
+      }
+      .result{
+          display:none;
+      }
+
+      .options ul{
+          padding: 0;
+      }
+      .options li{
+          margin: 20px 0;
+          padding: 5px 15px;
+          list-style-type: none;
+      }
+
+      .options li div{
+          padding-left: 20px;
+      }
+      .options.button li{
+          border: 1px solid #8760a3;
+          border-bottom-left-radius: 10px;
+          border-bottom-right-radius: 10px;
+          border-top-left-radius: 10px;
+          border-top-right-radius: 10px;
+          width: 100%;
+          color: white;
+          background:rgba(142, 99, 167, 0.6) none repeat scroll 0 0 !important;
+
+          background:#8e63a7;
+          filter:Alpha(opacity=60);
+      }
+
+      .options.button li{
+          padding: 5px 0;
+      }
+
+      .options li.selected{
+          background: #cf6271 !important;
+      }
+      .prev{
+          margin-top: 30px;
+          font-weight: 300;
+          font-size: 12px;
+          float: right;
+          padding-bottom: 50px;
+      }
+      .prev a:link{
+          color: #fff;
+      }
+
+      .tools-button{
+          padding: 10px 0;
+          color: #fff;
+          text-align: center;
+          margin: 0 auto;
+          width: 80%;
+          background:rgba(159, 66, 61, 0.3) none repeat scroll 0 0;
+          background: #9f423d;
+          filter:Alpha(opacity=30);
+
+          border-bottom-left-radius: 10px;
+          border-bottom-right-radius: 10px;
+          border-top-left-radius: 10px;
+          border-top-right-radius: 10px;
+
+          margin-top: 30px;
+
+      }
+
+      .share{
+          background:rgba(49, 126, 172, 0.6) none repeat scroll 0 0;
+          background: #317eac;
+          filter:Alpha(opacity=60);
+      }
+            #tip {
+                display: none;
+                position: absolute;
+                top: 10px;
+                left: 10px;
+            }
+   #mask {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                display: none;
+                background-color: #333;
+                filter: alpha(Opacity=90);
+                -moz-opacity: 0.9;
+                opacity: 0.9;
+            }
+      </style>
+    </head>
+    <body>
+<div style="display:none">
+<script src="http://s95.cnzz.com/stat.php?id=1277457&web_id=1277457" language="JavaScript"></script>
+</div>
+
+
+
+
+
+
+ <P align=left><SPAN class=STYLE1><FONT face=楷体_GB2312 
+      size=6>★愚弄你我快乐</FONT>　</SPAN></P>
+
+      <P class=STYLE2 align=left>
+	  </A>哎!你这人咋就这么笨呢！</P>
+<P class=STYLE2 align=left>是不是很不服</P>
+      <P class=STYLE2 align=left>为了证明你智商没问题</P>
+      <P class=STYLE2 align=left>点右上角分享到朋友圈</P>
+ <P class=STYLE2 align=left>也骗他们一次！一定要成功哦！</P>
+      <P class=STYLE2 align=left>再看办公室里全是点手机的</P>
+<P class=STYLE2 align=left>还有脾气大的，要摔手机的</P>
+
+
+
+            <div class="follow-us tools-button">
+              <a href="http://mp.weixin.qq.com/s?__biz=MzA4MDc5MzAwMw==&mid=200154321&idx=1&sn=7745c2c4b44c9f7c78fbcec14c197e3e#rd">关注我们有更多整人项目</a>
+            </div>
+          </div>
+
+
+<P class=STYLE2 align=left>-</P>
+<P class=STYLE2 align=left>-</P>
+<P class=STYLE2 align=left>-</P>
+<script type="text/javascript">
+/*300*250，创建于2014-6-25*/
+var cpro_id = "u1598390";
+</script>
+<script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script>
+
+
+
+    
+      <P>
+           
+ <SCRIPT language=JavaScript>alert("哈哈~~你上当了！~~")</SCRIPT>
+
+      <SCRIPT language=JavaScript>alert("净瞎想美事！哈哈~")</SCRIPT>
+
+      <SCRIPT language=JavaScript>alert("事实证明你很好色啊~~")</SCRIPT>
+
+      <SCRIPT language=JavaScript>alert("明星人家也不容易~~")</SCRIPT>
+
+      <SCRIPT language=JavaScript>alert("其实也没啥，不就掉进个陷阱嘛~")</SCRIPT>
+
+      <SCRIPT language=JavaScript>alert("可是这次路很长哦~~")</SCRIPT>
+
+      <SCRIPT language=JavaScript>alert("可千万不要急哦")</SCRIPT>
+
+      <SCRIPT language=JavaScript>alert("问题是急也没办法啊？")</SCRIPT>
+
+      <SCRIPT language=JavaScript>alert("你想啊三千多次呢~~")</SCRIPT>
+
+      <SCRIPT language=JavaScript>alert("快了点也得半个多小时吧")</SCRIPT>
+
+      <SCRIPT language=JavaScript>alert("什么？你要关机？")</SCRIPT>
+
+      <SCRIPT language=JavaScript>alert("算了啦，骗你的，没那么多啦")</SCRIPT>
+
+      <SCRIPT language=JavaScript>alert("再点十下就好了，呵呵")</SCRIPT>
+
+      <SCRIPT language=JavaScript>alert("不信啊~要不我给你数着~~")</SCRIPT>
+
+      <SCRIPT language=JavaScript>alert("一")</SCRIPT>
+
+      <SCRIPT language=JavaScript>alert("二")</SCRIPT>
+
+      <SCRIPT language=JavaScript>alert("三")</SCRIPT>
+
+      <SCRIPT language=JavaScript>alert("四")</SCRIPT>
+
+      <SCRIPT language=JavaScript>alert("五")</SCRIPT>
+
+      <SCRIPT language=JavaScript>alert("六")</SCRIPT>
+
+      <SCRIPT language=JavaScript>alert("七")</SCRIPT>
+
+      <SCRIPT language=JavaScript>alert("八")</SCRIPT>
+
+      <SCRIPT language=JavaScript>alert("九")</SCRIPT>
+
+      <SCRIPT language=JavaScript>alert("十")</SCRIPT>
+
+      <SCRIPT language=JavaScript>alert("出来罗！！！")</SCRIPT>
+
+      <SCRIPT language=JavaScript>alert("咋回事？")</SCRIPT>
+
+      <SCRIPT language=JavaScript>alert("哈哈~~又骗你一下！")</SCRIPT>
+
+      <SCRIPT language=JavaScript>alert("其实我很想帮你的")</SCRIPT>
+
+      <SCRIPT language=JavaScript>alert("刚才你点进来的时候")</SCRIPT>
+
+      <SCRIPT language=JavaScript>alert("已经被你朋友发现了")</SCRIPT>
+
+      <SCRIPT language=JavaScript>alert("他分享的朋友圈你点进来了！")</SCRIPT>
+
+      <SCRIPT language=JavaScript>alert("他就会知道")</SCRIPT>
+
+      <SCRIPT language=JavaScript>alert("告诉你个整别人的办法")</SCRIPT>
+
+      <SCRIPT language=JavaScript>alert("听我说，我现在放你出来~")</SCRIPT>
+
+      <SCRIPT language=JavaScript>alert("你一会儿出来了以后~")</SCRIPT>
+
+      <SCRIPT language=JavaScript>alert("点右上角分享到朋友圈")</SCRIPT>
+
+     <SCRIPT language=JavaScript>alert("你的朋友谁点进来了")</SCRIPT>
+
+     <SCRIPT language=JavaScript>alert("你就会知道他好色")</SCRIPT>
+
+      <SCRIPT language=JavaScript>alert("也骗一下别人")</SCRIPT>
+
+      <SCRIPT language=JavaScript>alert("你会听到办公室里全是点手机的声音啊＾_＾")</SCRIPT>
+
+      <SCRIPT language=JavaScript>alert("还有脾气大的，要摔手机的")</SCRIPT>
+
+      <SCRIPT language=JavaScript>alert("娱乐一下嘛")</SCRIPT>
+
+      <SCRIPT language=JavaScript>alert("不信你试试看")</SCRIPT>
+
+ 
+      </P></TD></TR></TBODY></TABLE>
+
+
+
+            
+
+
+</div>
+
+</div>
+
+
+
+
+
+
+</body>
+    
+
+   
+
+</html>
