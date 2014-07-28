@@ -1,0 +1,28 @@
+---
+layout: post
+title:  "谁动了我的contentInset"
+date:   2014-07-28 18:00:00
+categories: 工匠梦
+tags: [Jekyll]
+---
+
+今天有同事碰到一个问题，解决不了，来找我。
+
+![问题图片](/assets/images/2014-07-28-01.png)
+
+大概就像图片上面这个样子，绿条下面是一个UIScrollerView，但是这个地方的绿条是不应该被显示的。  
+
+同事问我，怎么能把这个绿条去掉，我就坐下来跟了一下。因为之前发现在使用IB的时候，Autoresize Subviews这个属性会很坑，所以首先怀疑是Autoresize Subviews修改了UIScrollerView的大小或者位置。  
+
+去掉了这个属性之后，绿条依然在显示，之后又怀疑是contentSize的问题，重置了contentSize之后，发现仍然没有解决问题，绿条君顽固的停留在状态栏的下面。  
+
+偶然发现是contentInset的问题，这个值的top属性为-20。刚好是绿条君所在的位置。  
+在viewDidload方法里重新设置了这个属性，问题仍然没有得到解决。  
+无奈之下，只好来看看是哪个方法影响了UIScrollerView的这个属性。写了一个测试类，重写了UIScrollerView的SetContentInset的方法，发现是这个`_NavigationControllerContentInsetAdjustment`影响了UIScrollerView的contentInset属性。
+
+但是在UIViewController和UINavgationCOntroller的头文件里，都没有发现类似的属性。只要求助万能的Stack Overflow了。[Get it!](http://stackoverflow.com/questions/18924431/ios-7-navigationcontroller-is-setting-the-contentinset-and-contentoffset-of-m )  
+
+这篇回答中提到在iOS7之后`The UIViewController will automatically set the contentInset of the first UIView.`，所以我们要么把UiViewController的automaticallyAdjustsScrollViewInsets属性设置为NO。
+	self.automaticallyAdjustsScrollViewInsets = NO;
+	
+要么就要在IB上，当UIScrollerView是第一个子View，或者孙View的时候(似乎是每一层都要做)，在他前面加一个view，使之不成为第一个View。
