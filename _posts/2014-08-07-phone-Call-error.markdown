@@ -3,7 +3,7 @@ layout: post
 title:  "iOS平台处理通话时，对UI的影响"
 date:   2014-08-07 18:00:00
 categories: 工匠梦
-tags: [Jekyll]
+tags: [iOS]
 ---
 
 在iOS平台上，如果我们定制了自己的控件，在打电话的时候，很有可能影响到我们的控件的位置。  
