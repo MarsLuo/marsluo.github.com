@@ -12,4 +12,16 @@ layout: default
   {{ content }}
   </article>
 
+  {% if page.previous  %}
+        <a href="{{ page.previous.url | prepend: site.baseurl | replace: '//', '/' }}">&laquo; Prev</a>
+  {% else %}
+        <span>&laquo; Prev</span>
+  {% endif %}
+  	&nbsp;&nbsp;&nbsp;&nbsp;
+  {% if page.next  %}
+        <a href="{{ page.next.url | prepend: site.baseurl | replace: '//', '/' }}">Next &raquo;</a>
+  {% else %}
+        <span>Next &raquo;</span>
+  {% endif %}
+
 </div>

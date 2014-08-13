@@ -9,3 +9,4 @@ username: MarsLuo
 # Build settings
 markdown: kramdown
 permalink: pretty
+paginate: 10
