@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "怎么辨别并移除iOS用户输入的emoji表情"
+title:  "8月项目优化总结——提升图文混排的效率"
 date:   2014-09-01 18:00:00
 categories: 工匠梦
 tags: [iOS]
