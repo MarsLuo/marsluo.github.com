@@ -9,8 +9,6 @@ tags: [HTML, Sublime]
 ####如何用Sublime格式化代码呢？
 
  `menu-edit-line-reindent`
-   
-     
  
 ####如何查找替换回车
 
