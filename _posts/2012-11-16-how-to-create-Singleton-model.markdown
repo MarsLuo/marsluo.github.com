@@ -6,6 +6,8 @@ categories: 工匠梦
 tags: [iOS]
 ---
 
+
+
 创建一个单例很多办法。我先列举一个苹果官方文档中的写法。
 
 	static AccountManager *DefaultManager = nil;  
