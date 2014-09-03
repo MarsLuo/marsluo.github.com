@@ -6,13 +6,13 @@ categories: 工匠梦
 tags: [HTML, Sublime]
 ---
 
-##### 如何用Sublime格式化代码呢？
+####如何用Sublime格式化代码呢？
 
  `menu-edit-line-reindent`
    
      
  
-##### 如何查找替换回车
+####如何查找替换回车
 
 ["GET     /","GET     /biz","GET     /biz/:id","GET     /cust"]  
 前几天要把类似这样的API文档化，但是这种格式根本不利于阅读。  
@@ -24,5 +24,5 @@ tags: [HTML, Sublime]
 4. 在Replace中输入“,/n”
 5. 回车，搞定。
 
-#####如何进入列模式
+####如何进入列模式
 鼠标左键＋Option 或 鼠标中键
