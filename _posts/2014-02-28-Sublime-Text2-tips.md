@@ -23,3 +23,6 @@ tags: [HTML, Sublime]
 3. 在Find输入框中输入“,”
 4. 在Replace中输入“,/n”
 5. 回车，搞定。
+
+#####如何进入列模式
+鼠标左键＋Option 或 鼠标中键
