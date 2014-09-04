@@ -39,7 +39,7 @@ tags: [iOS]
 ####image
 - 用于寻址，有多个命令
 - 示例：  
-	`image lookup --address 0x0000000100004af8`  查看指定地址的栈信息
+	`image lookup --address 0x0000000100004af8`  查看指定地址的栈信息  
 	`image lookup --type Point` 查看指定地址的类型信息
 	
 相关文章：  
