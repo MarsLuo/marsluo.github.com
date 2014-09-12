@@ -43,7 +43,7 @@ tags: [iOS]
 	`image lookup --type Point` 查看指定地址的类型信息
 	
 相关文章：  
-[Xcode的控制台调试命令](http://blog.csdn.net/likendsl/article/details/7576549)  
-[LLDB调试命令初探](http://www.starfelix.com/blog/2014/03/17/lldbdiao-shi-ming-ling-chu-tan/)  
-  [Xcode LLDB Debug教程](http://my.oschina.net/notting/blog/115294)  
-  [lldb组织相关命令查看（LLDB官方文档）](http://lldb.llvm.org/lldb-gdb.html)
+ [Xcode的控制台调试命令](http://blog.csdn.net/likendsl/article/details/7576549)  
+ [LLDB调试命令初探](http://www.starfelix.com/blog/2014/03/17/lldbdiao-shi-ming-ling-chu-tan/)  
+ [Xcode LLDB Debug教程](http://my.oschina.net/notting/blog/115294)  
+ [lldb组织相关命令查看（LLDB官方文档）](http://lldb.llvm.org/lldb-gdb.html)
