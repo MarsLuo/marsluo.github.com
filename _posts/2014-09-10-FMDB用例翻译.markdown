@@ -1,0 +1,297 @@
+---
+layout: post  
+title:  "FMDB用例分析"  
+date:   2014-09-10 18:00:00  
+categories: 工匠梦  
+tags: [iOS]  
+---
+
+本文是对FMDB使用文档的翻译。  
+参考了[pengtao](http://www.cocoachina.com/bbs/read.php?tid=140901)已经翻译的成果。
+
+[FMDB地址](https://github.com/ccgus/fmdb)
+
+下面是翻译的内容：
+
+---
+
+# FMDB v2.3
+
+这是一个对[SQLite](http://sqlite.org/)的Object-c封装库。
+
+## FMDB邮件列表:
+
+http://groups.google.com/group/fmdb
+
+## 请了解SQLite的FAQ:
+
+http://www.sqlite.org/faq.html
+
+由于FMDB是构建在SQLite之上的，你应当至少把这篇[文章 http://www.sqlite.org/faq.html](http://www.sqlite.org/faq.html)从头到尾的读一遍。同时，把SQLite的文档页 http://www.sqlite.org/docs.html 加到你的书签中。
+
+
+## CocoaPods
+
+[![Dependency Status](https://www.versioneye.com/objective-c/fmdb/2.3/badge.svg?style=flat)](https://www.versioneye.com/objective-c/fmdb/2.3)
+[![Reference Status](https://www.versioneye.com/objective-c/fmdb/reference_badge.svg?style=flat)](https://www.versioneye.com/objective-c/fmdb/references)
+
+FMDB可以用[CocoaPods](http://cocoapods.org/)来安装。
+
+```
+pod 'FMDB'
+# pod 'FMDB/SQLCipher'   # If using FMDB with SQLCipher
+```
+
+**如果要在使用FMDB的同时也要使用[SQLCipher](http://sqlcipher.net/)，你应当使用FMDB/SQLCipher这个SQLCipher的subspec。  FMDB/SQLCipher的subspec是SQLCipher的依赖，允许FMDB使用`-DSQLITE_HAS_CODEC`来编译。**
+
+## FMDB类文档:
+
+http://ccgus.github.io/fmdb/html/index.html
+
+## 使用ARC还是手动管理内存？
+
+你可以同时在你的项目里使用这两种编码风格。FMDB会自动在编译的时候确定你用的是哪一种。
+
+```
+MarsLuo:用宏定义的方式来区分当前文件是否使用ARC。
+```
+
+## 用例  
+
+FMDB有三个主要的类：
+
+1. `FMDatabase` - 表示一个单独的SQLite数据库。用来执行SQL语句。
+2. `FMResultSet` - 表示一个`FMDatabase`查询后的结果集。
+3. `FMDatabaseQueue` - 如果你想在多线程中执行多个查询或者更新，你将会用到这个类。这个将在“线程安全”那一章讲到。
+
+### 创建数据库  
+
+创建`FMDatabase`对象需要一个SQLite数据库文件的路径。这个路径可以是三种之一：  
+
+1. 一个文件的路径。这个路径无需真实存在在磁盘上。如果它不存在，它（FMDB）将会为你创建一个。  
+2. 一个空字符串（`@""`）。此时将会在临时位置创建一个空数据库。这个数据库将在`FMDB`关闭数据库连接时被删除。  
+3. `NULL`， 将会创建一个内存中的数据库。这个数据库将在`FMDB`关闭数据库连接时被删除。  
+
+（如果需要了解更多关于临时数据库和内存数据库，可以阅读[SQLite文档](http://www.sqlite.org/inmemorydb.html))。）  
+
+创建数据库示例代码：
+
+	FMDatabase *db = [FMDatabase databaseWithPath:@"/tmp/tmp.db"];
+	
+### 打开数据库  
+
+在你和数据库做交互之前，数据库必须是打开的。如果因为资源或者权限不足，无法创建或者打开数据库，将会打开失败。  
+
+	if (![db open]) {
+		[db release];
+		return;
+	}
+	
+### 执行更新 
+
+一切不是`SELECT`语句的SQL语句都被视为一个更新。它包括`CREATE`，`UPDATE`，`INSERT`，`ALTER`，`COMMIT`，`BEGIN`，`DETACH`，`DELETE`，`DROP`，`END`，`EXPLAIN`，`VACUUM`和 `REPLACE` 语句 （等等）。简单的说，如果你的SQL语句没有以`SELECT`开头，那他就是一个更新语句。  
+
+执行更新语句将会返回一个布尔值（`BOOL`）。返回值为`YES`意味着更新语句被成功执行了，而返回值为`NO`意味着可能遇到了某些错误。你可以调用`-lastErrorMessage`和`-lastErrorCode`方法来获取到更多的信息。  
+
+
+### 执行查询  
+
+一个`SELECT`语句就是一个查询，将会被某一个`-executeQuery...`方法执行。  
+
+如果执行查询语句成功，将会返回一个`FMResultSet`对象，如果失败，将会返回`nil`。和执行更新一样，这里可以传递`NSError **`参数。另外，你也可以通过`-lastErrorMessage`和`-lastErrorCode`方法来确定为什么一个查询失败了。  
+
+为了对你查询的结果进行遍历，你可以使用`while()`循环。你也需要知道从一个记录“跳到”另外一个记录。使用了FMDB，你可以很简单的做到，就像这样：  
+
+	FMResultSet *s = [db executeQuery:@"SELECT * FROM myTable"];
+	while ([s next]) {
+		//retrieve values for each record
+	}
+	
+在你试图访问一个查询的返回值之前，你必须总是调用`-[FMResultSet next]`，甚至你只是需要一条记录：  
+
+	FMResultSet *s = [db executeQuery:@"SELECT COUNT(*) FROM myTable"];
+	if ([s next]) {
+		int totalCount = [s intForColumnIndex:0];
+	}
+	
+`FMResultSet` 有很多方法可以让你以合适的格式获取到数据：
+
+- `intForColumn:`
+- `longForColumn:`
+- `longLongIntForColumn:`
+- `boolForColumn:`
+- `doubleForColumn:`
+- `stringForColumn:`
+- `dateForColumn:`
+- `dataForColumn:`
+- `dataNoCopyForColumn:`
+- `UTF8StringForColumnName:`
+- `objectForColumnName:`
+
+每一个这样的方法，也有类似`{type}ForColumnIndex:`这样的变体，区别是我们需要传入查询结果集的列索引，就像传入这些列的名字（在`{type}ForColumnName:`）一样。
+
+通常来说，你无须自己调用`FMResultSet`对象的`-close`方法来关闭结果集，因为结果集将在`FMResultSet`对象被释放或者数据库被关闭的时候关闭的。  
+
+### 关闭
+
+当你对这个数据库执行完了所有的查询和更新后，你应当关闭调用`FMDatabase`的`-close`方法来关闭SQLite的连接，释放程序在这个期间所获得的资源。
+
+	[db close];
+	
+### 事务
+
+`FMDatabase`可以通过合适的方法来或者执行开启、关闭事务语句来开启和提交一个事务。
+
+
+### 多个语句和批处理
+
+你可以使用`FMDatabase`的`executeStatements:withResultBlock:`来在一个string里执行多个SQL语句：
+
+```
+NSString *sql = @"create table bulktest1 (id integer primary key autoincrement, x text);"
+                 "create table bulktest2 (id integer primary key autoincrement, y text);"
+                 "create table bulktest3 (id integer primary key autoincrement, z text);"
+                 "insert into bulktest1 (x) values ('XXX');"
+                 "insert into bulktest2 (y) values ('YYY');"
+                 "insert into bulktest3 (z) values ('ZZZ');";
+
+success = [db executeStatements:sql];
+
+sql = @"select count(*) as count from bulktest1;"
+       "select count(*) as count from bulktest2;"
+       "select count(*) as count from bulktest3;";
+
+success = [self.db executeStatements:sql withResultBlock:^int(NSDictionary *dictionary) {
+    NSInteger count = [dictionary[@"count"] integerValue];
+    XCTAssertEqual(count, 1, @"expected one record for dictionary %@", dictionary);
+    return 0;
+}];
+
+```
+
+### 数据净化
+
+当你给FMDB提供一个SQL语句（来执行更新或者查询）时，你不需要试图在插入之前做数据净化（防止SQL注入等安全问题）。相反的，你可以使用标准SQLite绑定语法：
+
+	INSERT INTO myTable VALUES (?, ?, ?)
+	
+"`?`"字符将会被SQLite识别为一个需要替换的占位符。执行方法时将会接受一个可变参数列表（或者表示为其他参数，比如`NSArray`， `NSDictionary`，或者一个`va_list`），SQLite会为你正确的转义。  
+
+或者你也可以使用命名参数语法：  
+
+    INSERT INTO myTable VALUES (:id, :name, :value)
+    
+参数*必须*以冒号开头。SQLite同样也接受其他字符，但是字典的key本身就有一个冒号的前缀，所以*不要*在字典的前面加冒号。  
+
+    NSDictionary *argsDict = [NSDictionary dictionaryWithObjectsAndKeys:@"My Name", @"name", nil];
+    [db executeUpdate:@"INSERT INTO myTable (name) VALUES (:name)" withParameterDictionary:argsDict];
+
+而且，也不能这么写（或者类似的写法）： 
+
+	[db executeUpdate:[NSString stringWithFormat:@"INSERT INTO myTable VALUES (%@)", @"this has \" lots of ' bizarre \" quotes '"]];
+	
+相反的，你应该这么写:
+
+	[db executeUpdate:@"INSERT INTO myTable VALUES (?)", @"this has \" lots of ' bizarre \" quotes '"];
+	
+所有参数，提供给`-executeUpdate:`方法、或者他用`va_list`（或者可变参数）作为参数传递的方法，必须是对象。下面的代码可能不会正常的工作（将会导致Crash）：
+
+	[db executeUpdate:@"INSERT INTO myTable VALUES (?)", 42];
+
+正确的方式应当是把数字打包成一个`NSNumber`对象：
+
+	[db executeUpdate:@"INSERT INTO myTable VALUES (?)", [NSNumber numberWithInt:42]];
+	
+或者，你可以使用`NSString`风格的变体`-execute*WithFormat:`：
+
+	[db executeUpdateWithFormat:@"INSERT INTO myTable VALUES (%d)", 42];
+
+在`-execute*WithFormat:`方法内部，会帮你把这些参数打包。使用以下的修饰符可以被识别：`%@`， `%c`， `%s`， `%d`， `%D`， `%i`， `%u`， `%U`， `%hi`， `%hu`， `%qi`， `%qu`， `%f`， `%g`， `%ld`， `%lu`， `%lld`，和`%llu`。 使用其他修饰符，将会导致不可预期的结果。在某些情况下，你可能需要在SQL语句里使用`%`，这时候，你应该使用`%%`。
+
+##使用FMDatabaseQueue和线程安全
+
+在多线程使用一个FMDatabase实例可不是一个好主意。为每一个线程创建一个FMDB的对象，是没问题的。不要在多线程中分享一个实例，他确实不能同时在多个线程中使用。如果你这样做了，坏事可能会频频发生。比如程序动不动就崩溃啊，动不动就异常啊，或者陨石从天空中掉下来，砸坏了你心爱的小本本啊。*反正就是很恶心就是了。*
+
+**所以，不要初始化一个FMDatabase实例，然后在多个线程里用它啊！**
+
+相反的，要用`FMDatabaseQueue`。他是你的朋友，而且会帮助到你哦。下面是怎么用它：
+
+首先，创建你的队列。
+
+	FMDatabaseQueue *queue = [FMDatabaseQueue databaseQueueWithPath:aPath];
+
+像下面这样用它。
+
+    [queue inDatabase:^(FMDatabase *db) {
+		[db executeUpdate:@"INSERT INTO myTable VALUES (?)", [NSNumber numberWithInt:1]];
+		[db executeUpdate:@"INSERT INTO myTable VALUES (?)", [NSNumber numberWithInt:2]];
+		[db executeUpdate:@"INSERT INTO myTable VALUES (?)", [NSNumber numberWithInt:3]];
+		
+		FMResultSet *rs = [db executeQuery:@"select * from foo"];
+        while ([rs next]) {
+            …
+        }
+    }];
+
+或者像这样轻松的把任务包装在事务里：
+
+    [queue inTransaction:^(FMDatabase *db, BOOL *rollback) {
+        [db executeUpdate:@"INSERT INTO myTable VALUES (?)", [NSNumber numberWithInt:1]];
+		[db executeUpdate:@"INSERT INTO myTable VALUES (?)", [NSNumber numberWithInt:2]];
+		[db executeUpdate:@"INSERT INTO myTable VALUES (?)", [NSNumber numberWithInt:3]];
+		
+		if (whoopsSomethingWrongHappened) {
+		    *rollback = YES;
+		    return;
+		}
+		// etc…
+		[db executeUpdate:@"INSERT INTO myTable VALUES (?)", [NSNumber numberWithInt:4]];
+    }];
+
+`FMDatabaseQueue`将会在执行在一个有序队列里的Blocks，就像他的名字。所以如果你同时在多线程里调用`FMDatabaseQueue`的方法，它将按照他接收到的顺序来执行。这样一来，查询和更新谁也不会干扰谁，皆大欢喜。
+
+**注意：** 这意味着`FMDatabaseQueue`的方法是block化的。所以就算你传递了语句块，他们也不会在另外一个线程里执行。
+
+##基于Block自定义SQLite函数
+
+你可以这样做的！举个例子，去main.m看看`makeFunctionNamed:`：  
+（我给搬到下面了。）
+
+
+	 [adb makeFunctionNamed:@"StringStartsWithH" maximumArguments:1 withBlock:^(sqlite3_context *context, int aargc, sqlite3_value **aargv) {
+            if (sqlite3_value_type(aargv[0]) == SQLITE_TEXT) {
+                
+                @autoreleasepool {
+                    
+                    const char *c = (const char *)sqlite3_value_text(aargv[0]);
+                    
+                    NSString *s = [NSString stringWithUTF8String:c];
+                    
+                    sqlite3_result_int(context, [s hasPrefix:@"h"]);
+                }
+            }
+            else {
+                NSLog(@"Unknown formart for StringStartsWithH (%d) %s:%d", sqlite3_value_type(aargv[0]), __FUNCTION__, __LINE__);
+                sqlite3_result_null(context);
+            }
+        }];
+        
+        
+
+## Contributors
+
+The contributors to FMDB are contained in the "Contributors.txt" file.
+
+## Additional projects using FMDB, which might be interesting to the discerning developer.
+
+ * [FMDBMigrationManager](https://github.com/layerhq/FMDBMigrationManager), A SQLite schema migration management system for FMDB
+ * [FCModel](https://github.com/marcoarment/FCModel), An alternative to Core Data for people who like having direct SQL access
+
+## Quick notes on FMDB's coding style
+
+Spaces, not tabs.  Square brackets, not dot notation.  Look at what FMDB already does with curly brackets and such, and stick to that style.  
+
+
+## License
+
+The license for FMDB is contained in the "License.txt" file.
