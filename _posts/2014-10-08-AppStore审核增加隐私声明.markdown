@@ -1,0 +1,23 @@
+---
+layout: post  
+title:  "AppStore审核增加隐私声明"  
+date:   2014-10-08 18:00:00  
+categories: 工匠梦  
+tags: [iOS]  
+---
+Resolution Center  
+State  
+Metadata Rejected  
+Reasons  
+17.5: Apps that include account registration or access a user’s existing account must include a privacy policy or they will be rejected   
+Information Needed  
+
+
+现在只要有登陆或者注册的app都需要添加隐私政策了。  
+你的app需要添加隐私政策，具体加的位置并不是在app应用里，而是在你提交审核时有个Privacy Policy URL（与你app的Name、Description在一块），将URL填在这里即可。
+app里是不需要加的，只要将URL填在Privacy Policy URL即可。
+
+另：将隐私协议写在一个web网页里，Privacy Policy URL里写上该隐私协议的网站地址。
+
+[AppStore审核--17.5](http://blog.csdn.net/addychen/article/details/39672185)  
+[苹果审核175不包括隐私政策](http://www.cocoachina.com/ask/questions/show/119740/%E8%8B%B9%E6%9E%9C%E5%AE%A1%E6%A0%B8175%E4%B8%8D%E5%8C%85%E6%8B%AC%E9%9A%90%E7%A7%81%E6%94%BF%E7%AD%96)
