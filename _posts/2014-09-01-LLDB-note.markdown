@@ -20,6 +20,7 @@ tags: [iOS]
 - 示例：  
 	`po [self view]`  
 	`po [[NSString alloc] initWithFormat:@"Item index is: %d", index]`  
+	`po [self recursiveDescription]` //打印视图树
 	
 ####p 
 - 打印当前基本类型的描述  
@@ -27,7 +28,7 @@ tags: [iOS]
 	`p (int)[[[self view] subviews] count]`  
 	
 ####expr
-- 可以在调试时动态执行指定表达式，并将结果打印出来，还可以改变指定变量的指
+- 可以在调试时动态执行指定表达式，并将结果打印出来，还可以改变指定变量的值
 - 示例：  
 	`expr username = @"username"`
 	
