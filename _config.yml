@@ -7,9 +7,6 @@ url: "http://marsluo.github.com/"
 username: MarsLuo
 
 # Build settings
+markdown: kramdown
 permalink: pretty
 paginate: 10
-
-markdown: KramdownPygments
-kramdown:
-  default_lang: objectivec
