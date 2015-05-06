@@ -1,0 +1,25 @@
+---
+layout: post  
+title:  "最近遇到问题总结"  
+date:   2015-05-06 22:01:03  
+categories: 工匠梦  
+tags: [iOS, Tips]  
+---
+
+前一阵遇到了一些小问题，这里做一个小总结吧。    
+
+####在iOS7中，给Images.xcassets命名时要注意：
+在iOS7中，给Images.xcassets命名时要注意，图片在文件夹里的命名和项目中的命名要一致，否则iOS7里边无法识别，从而会导致CUICatalog: Invalid asset name supplied: (null), or invalid scale factor: 2.000000    
+
+####定位消息才出现，立马就消失了
+在iOS8.1.2中，会出现这样的问题，提示申请用户地理位置信息的权限弹窗才出现，立马就消失了。    
+跟了很久才发现，原因是提示申请用户地理位置信息的权限弹窗应该是跟着CLlocationManager走的，当申请权限的CLlocationManager被销毁后，相应的弹窗就消失了，所以才会出现这样的现象。
+
+####设置索引颜色
+TableView的索引颜色是可以调整的。主要使用下面的代码来调整：
+
+~~~    
+self.tableView.sectionIndexColor = [ColorManager colorWithNormal];
+self.tableView.sectionIndexBackgroundColor = [ColorManager clearColor];
+self.tableView.sectionIndexTrackingBackgroundColor = [ColorManager clearColor];
+~~~    
