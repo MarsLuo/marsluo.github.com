@@ -1,0 +1,77 @@
+---
+layout: post  
+title:  "使用Python来检索iOS项目中的汉字"  
+date:   2015-05-06 21:05:15  
+categories: 工匠梦  
+tags: [iOS, Python]  
+---
+
+最近我们的产品提出，现有的项目可能会有国际化的需求，但是现有项目中，很多中文字串，并没有做国际化处理，如果依靠人力将这些字串全部找出来，有很大程度上，会有遗漏，寻找也会浪费大量的人力。    
+恰巧我最近在玩Python，我便想用Python写一个小工具来完成这一工作。    
+下面是完成的源码：基于Python2.7完成。    
+
+~~~
+__author__ = 'yluo'
+#coding=utf-8
+
+import os, sys
+import re
+
+# Usage
+# 修改Main函数里root的位置为需要项目的位置
+# 修改searchExts里的内容可以匹配不同的文件类型，默认为iOS应用类型
+
+
+searchExts = ['.m','.xib']
+
+def checkChineseWord(path):
+
+    if os.path.splitext(path)[1] in searchExts:
+        fp=open(path, "r");
+        lineNumber = 0
+        hasFind = False
+        for eachline in fp:
+            lineNumber = lineNumber + 1
+            pchinese = re.compile(ur'.*\"[\u4e00-\u9fa5]+.*') #判断是否为中文的正则表达式
+            match = pchinese.search(eachline.decode('utf8'))
+            if match :
+                print ("lineNumber:"+ str(lineNumber)+" matchString:"+match.group())
+                hasFind = True
+        if hasFind:
+            print ("fileName:"+path)
+            print("------------------------------------------------------------------------------")
+
+
+def traversalFiles(rootDir):
+    for lists in os.listdir(rootDir):
+        path = os.path.join(rootDir, lists)
+        checkChineseWord(path)
+        if os.path.isdir(path):
+            traversalFiles(path)
+
+if __name__ == '__main__':
+
+    root="you project path"
+    traversalFiles(root)
+    
+~~~
+
+####使用方式
+
+首先将上述代码保存为SearchChinese27.py，再将其中` root="you project path" `中your project path 替换为你项目的路径，最好为绝对路径。
+然后在命令行里输入`python SearchChinese27.py`，就会在命令行里看到相应中文的位置和行数了。
+
+####使用示例
+
+~~~
+lineNumber:175 matchString:            returnString = @"昨天"; // 昨天
+lineNumber:178 matchString:        returnString = @"今天"; // 今天
+lineNumber:247 matchString:                [dateFormatter setDateFormat:@"明天 hh:mm"];
+fileName:/Users/yluo/Git/zl-ios/Cicada/Cicada/Cicada/Class/Tools/NSString+Tools.m
+~~~
+
+####源码下载
+
+相应的源码也可以在[这里](https://github.com/MarsLuo/PythonTools)下载到。
+
+
