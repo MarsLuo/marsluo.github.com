@@ -13,7 +13,7 @@ defineClass('NoticeViewController', {
 });
 
 require('NSString,PromptAction,NSBundle'); // 1.6.5 取消客户端本地号段验证
-defineClass('NSString', {} {
+defineClass('NSString', {}, {
     checkPhoneString: function(phone) {
         var result = YES;
         if (NSString.checkNullString(phone)) {
