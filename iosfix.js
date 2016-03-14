@@ -28,7 +28,7 @@ defineClass('NSString', {}, {
 });
 
 require('NSNumber,NetWorkClient');  // 1.6.6 家长获取孩子入离园信息 修改为message服务
-defineClass('NetWorkClient', {} {
+defineClass('NetWorkClient', {}, {
     queryCardMessageWithChildId_PageNo_success_failure: function(childId, pageNo, success, failure) {
         var path = "/message/queryCardMessageByChildId";
         var parameter = {
