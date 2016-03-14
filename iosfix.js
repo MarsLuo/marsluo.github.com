@@ -28,7 +28,7 @@ defineClass('NSString', {}, {
 });
 
 require('NSNumber,NetWorkClient,NSArray');  // 1.6.6 家长获取孩子入离园信息 修改为message服务
-defineClass('NetWorkClient', {}, {
+defineClass('NetWorkClient', {},{
     queryCardMessageWithChildId_PageNo_success_failure: function(childId, pageNo, success, failure) {
         var path = "/message/queryCardMessageByChildId";
         var parameter = {
@@ -36,16 +36,15 @@ defineClass('NetWorkClient', {}, {
             "childId": NSNumber.numberWithInteger(childId)
         };
 
-        NetWorkClient.postRequest_parameters_serviceType_NeedPrompt_WaitPrompt_ShouldDismissPrompt_success_failure(path, parameter, 3, YES, NO, YES, block("NSArray", function(dataObject) {
-            var arr = require('NSMutableArray').alloc().init()
-            for (var i = 0; i < dataObject.length; i++) {
-                var jsData =  dataObject[i];
-                arr.push(jsData);
-            };
-            jsArr = arr.toJS() 
-            success(jsArr);
-        }), block('NSDictionary', function(dataObject) {
+
+        var successBlock = function(dataObject){
+            success(dataObject);
+        };
+        var failureBlock = function(dataObject){
             failure();
-        }));
+        };
+
+        NetWorkClient.postRequest_parameters_serviceType_NeedPrompt_WaitPrompt_ShouldDismissPrompt_success_failure(path, parameter, 3, YES, NO, YES, successBlock, failureBlock);
     },
 });
+
