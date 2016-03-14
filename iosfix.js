@@ -36,15 +36,15 @@ defineClass('NetWorkClient', {}, {
             "childId": NSNumber.numberWithInteger(childId)
         };
 
-        NetWorkClient.postRequest_parameters_serviceType_NeedPrompt_WaitPrompt_ShouldDismissPrompt_success_failure(path, parameter, 3, YES, NO, YES, block('id', function(dataObject) {
-            var arr = require('NSMutableArray').alloc().init()
-            for (var i = 0; i < dataObject.length; i++) {
-                var jsData =  dataObject[i];
-                arr.push(jsData);
-            };
-            jsArr = arr.toJS() 
-            success(jsArr);
-        }), block('id', function(dataObject) {
+        NetWorkClient.postRequest_parameters_serviceType_NeedPrompt_WaitPrompt_ShouldDismissPrompt_success_failure(path, parameter, 3, YES, NO, YES, block('NSMutableArray', function(dataObject) {
+            // var arr = require('NSMutableArray').alloc().init()
+            // for (var i = 0; i < dataObject.length; i++) {
+            //     var jsData =  dataObject[i];
+            //     arr.push(jsData);
+            // };
+            // jsArr = arr.toJS() 
+            success(dataObject.toJS());
+        }), block('NSDictionary', function(dataObject) {
             failure();
         }));
     },
