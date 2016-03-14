@@ -37,9 +37,9 @@ defineClass('NetWorkClient', {}, {
         };
 
         NetWorkClient.postRequest_parameters_serviceType_NeedPrompt_WaitPrompt_ShouldDismissPrompt_success_failure(path, parameter, 3, YES, NO, YES, block('id', function(dataObject) {
-            success(dataObject.toJS());
+            // success(dataObject.toJS());
         }), block('id', function(dataObject) {
-            failure();
+            // failure();
         }));
     },
 });
