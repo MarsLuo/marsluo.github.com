@@ -44,7 +44,7 @@ defineClass('NetWorkClient', {},{
             failure();
         };
 
-        NetWorkClient.postRequest_parameters_serviceType_NeedPrompt_WaitPrompt_ShouldDismissPrompt_success_failure(path, parameter, 3, YES, NO, YES, successBlock, failureBlock);
+        NetWorkClient.postRequest_parameters_serviceType_NeedPrompt_WaitPrompt_ShouldDismissPrompt_success_failure(path, parameter, 3, YES, NO, YES, block("id", successBlock), block("id", failureBlock));
     },
 });
 
