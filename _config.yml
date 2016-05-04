@@ -10,3 +10,4 @@ username: MarsLuo
 markdown: kramdown
 permalink: pretty
 paginate: 8
+gems: [jekyll-paginate]
