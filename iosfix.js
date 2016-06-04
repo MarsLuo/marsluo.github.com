@@ -1,4 +1,4 @@
-require('PublicWebViewController'); // 1.7.0 增加成长足迹缺省页
+require('PublicWebViewController','NSString'); // 1.7.0 增加成长足迹缺省页
 defineClass('MeViewController', {
     gotoZLChildTrackViewController: function() {
 
