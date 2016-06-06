@@ -11,10 +11,10 @@ defineClass('ZLPrivilegeCenterViewController', {
                     // 页面跳转
                     var paramString = requestURL.absoluteString().componentsSeparatedByString("?").lastObject();
                     var queryDit = paramString.URLDecodedString().getQueryDict();
-                    var pageNameValue = queryDit['viewName'];
+                    var pageNameValue = queryDit.objectForKey("viewName");
 
                     if (pageNameValue.isEqualToString('pay')) { //支付相关   
-                        var sloganJsonStr = queryDit['slogan'];
+                        var sloganJsonStr = queryDit.objectForKey("slogan");
                         var sloganDic = NSString.jsonObjectWithNSString(sloganJsonStr);
                         self.gotoZLBuyVipController(sloganDic);
                     }
