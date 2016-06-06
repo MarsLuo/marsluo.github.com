@@ -1,4 +1,4 @@
-require('NSString'); // 修正分享问题
+require('NSString'); // 修正分享问题 1.8.0.197
 defineClass('ZLPrivilegeCenterViewController', {
     webView_shouldStartLoadWithRequest_navigationType: function(webView, request, navigationType) {
         var requestURL = request.URL();
@@ -24,7 +24,6 @@ defineClass('ZLPrivilegeCenterViewController', {
         }
 
         self.setZlShareUrl(NSString.stringWithFormat("%@", webView.request().URL()));
-
         self.setZlLeaveRequest(request);
 
         return YES;
