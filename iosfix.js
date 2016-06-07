@@ -23,7 +23,7 @@ defineClass('ZLPrivilegeCenterViewController', {
             return NO;
         }
 
-        self.setZlShareUrl(NSString.stringWithFormat("%@", webView.request().URL()));
+        self.setZlShareUrl(NSString.stringWithFormat("%@", requestURL));
         self.setZlLeaveRequest(request);
 
         return YES;
