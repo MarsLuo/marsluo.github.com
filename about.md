@@ -1,6 +1,6 @@
 ---
 layout: page
-title: 我的简历
+title: 骆杨的简历
 permalink: /about/
 ---
 
