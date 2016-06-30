@@ -1,35 +1,25 @@
-require('NSString,NSNumber');  // 修正园长不能正确查看接送信息的问题
+
+require('ZLChildrenAttendanceViewController,ZLTeacherAttendanceViewController');  // 1.8.1.206 修正园长不能正确查看接送信息的问题
 defineClass('ZLDirectorAssistantViewController', {
-    updateUIMethodWithkindergartenCount: function() {
-        for (var i = 0; i < self.kindergartenCountArray().count(); i++) {
-            var zlDirectorKG = self.kindergartenCountArray().objectAtIndex(i);
-            _schoolIdArray.addObject(NSString.stringWithFormat("%lld", (long long) zlDirectorKG.schoolId()));
-            _schoolNameArray.addObject(zlDirectorKG.schoolName());
-            _levelArr.addObject(NSString.stringWithFormat("%ld", (long) zlDirectorKG.level()));
-            _hasCardMachineArray.addObject(NSNumber.numberWithBool(zlDirectorKG.hasCardMachine()));
-        }
-        if (_schoolNameArray.count() == 1) {
-            _ui_btnImage.setHidden(true);
-            _selectTableView.setHidden(true);
-            _selectBtn.setUserInteractionEnabled(false);
-            _hasCardMachine = _hasCardMachineArray.firstObject().boolValue();
+    onChildrenButtonTouch: function(sender) {
+        if (self.hasCardMachineArray().count() == 1) {
+            self.setHasCardMachine(self.hasCardMachineArray().firstObject());
         }
 
-        if (_schoolNameArray.count() < 4) {
-            _selectViewHeight.setConstant(_schoolNameArray.count() * 40);
-        } else {
-            _selectViewHeight.setConstant(40 * 4);
-        }
-        self.selectTableView().reloadData();
-        if (self.schoolNameArray().count() > 0) {
-            self.ui_titleLabel().setText(self.schoolNameArray().firstObject());
-        }
-        if (self.schoolIdArray().count() > 0) {
-            self.setSchoolIdStr(self.schoolIdArray().firstObject());
-        }
-        self.queryTeacherAndChildAttendanceBySchoolId();
-        self.configDirectorFunction(self.levelArr().firstObject().integerValue());
-    },{
+        var zlChildrenAttendanceViewController = ZLChildrenAttendanceViewController.alloc().initWithNibName_bundle("ZLChildrenAttendanceViewController", null);
+        zlChildrenAttendanceViewController.setSchoolId(self.schoolIdStr());
+        zlChildrenAttendanceViewController.setHasCardMachine(self.hasCardMachine());
+        self.navigationController().pushViewController_animated(zlChildrenAttendanceViewController, YES);
+    },
+    onTeacherButtonTouch: function(sender) {
 
-    }
+        if (self.hasCardMachineArray().count() == 1) {
+            self.setHasCardMachine(self.hasCardMachineArray().firstObject());
+        }
+
+        var zlTeacherAttendanceViewController = ZLTeacherAttendanceViewController.alloc().initWithNibName_bundle("ZLTeacherAttendanceViewController", null);
+        zlTeacherAttendanceViewController.setSchoolId(self.schoolIdStr());
+        zlTeacherAttendanceViewController.setHasCardMachine(self.hasCardMachine());
+        self.navigationController().pushViewController_animated(zlTeacherAttendanceViewController, YES);
+    },
 });
