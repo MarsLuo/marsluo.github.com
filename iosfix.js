@@ -9,9 +9,9 @@ defineClass('ZLDirectorAssistantViewController', {
             _hasCardMachineArray.addObject(NSNumber.numberWithBool(zlDirectorKG.hasCardMachine()));
         }
         if (_schoolNameArray.count() == 1) {
-            _ui_btnImage.setHidden(YES);
-            _selectTableView.setHidden(YES);
-            _selectBtn.setUserInteractionEnabled(NO);
+            _ui_btnImage.setHidden(true);
+            _selectTableView.setHidden(true);
+            _selectBtn.setUserInteractionEnabled(false);
             _hasCardMachine = _hasCardMachineArray.firstObject().boolValue();
         }
 
@@ -29,5 +29,7 @@ defineClass('ZLDirectorAssistantViewController', {
         }
         self.queryTeacherAndChildAttendanceBySchoolId();
         self.configDirectorFunction(self.levelArr().firstObject().integerValue());
-    },
+    },{
+        
+    }
 });
