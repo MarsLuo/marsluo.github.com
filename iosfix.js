@@ -2,7 +2,7 @@ require('NSString,NSNumber');  // 修正园长不能正确查看接送信息的�
 defineClass('ZLDirectorAssistantViewController', {
     updateUIMethodWithkindergartenCount: function() {
         for (var i = 0; i < self.kindergartenCountArray().count(); i++) {
-            var zlDirectorKG = self.kindergartenCountArray[i]();
+            var zlDirectorKG = self.kindergartenCountArray().objectAtIndex(i);
             _schoolIdArray.addObject(NSString.stringWithFormat("%lld", (long long) zlDirectorKG.schoolId()));
             _schoolNameArray.addObject(zlDirectorKG.schoolName());
             _levelArr.addObject(NSString.stringWithFormat("%ld", (long) zlDirectorKG.level()));
@@ -30,6 +30,6 @@ defineClass('ZLDirectorAssistantViewController', {
         self.queryTeacherAndChildAttendanceBySchoolId();
         self.configDirectorFunction(self.levelArr().firstObject().integerValue());
     },{
-        
+
     }
 });
