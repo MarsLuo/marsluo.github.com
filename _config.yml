@@ -3,11 +3,11 @@ title: Mars Luo's Note
 email: lyyx_0@163.com
 description: "This is Mars Luo's note book.<br/> Will record same thing interesting."
 baseurl: ""
-url: "http://marsluo.github.com/"
+url: "http://www.marsluo.com/"
 username: MarsLuo
 
 # Build settings
 markdown: kramdown
 permalink: pretty
-paginate: 8
+paginate: 15
 gems: [jekyll-paginate]
