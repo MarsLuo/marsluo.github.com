@@ -63,7 +63,8 @@ $ gitbook pdf
 #### 7.配置。
 gitbook有很多配置。我们这里只说我们用到的配置。
 配置文件的名字为book.json。
-内容如下：
+内容如下：  
+
 ~~~
 {
     "language": "zh-hans”, // 标记当前文档语言
