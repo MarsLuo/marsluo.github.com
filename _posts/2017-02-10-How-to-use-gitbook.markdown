@@ -40,11 +40,11 @@ $ gitbook serve
     * [We love feedback](part2/feedback_please.md)
     * [Better tools for authors](part2/better_tools.md)  
 
-~~~~
+~~~
 以官方提供的示例来解说。
 在gitbook中，我们可以为我们的书分两个目录层级。层级用/tab键来划分。方括号中的是章节名，圆括号中的是这个章节对应的文件路径。
 
-#### 5. 导出。
+#### 5. 导出
 以PDF形式导出。
 gitbook以PDF形式导出的时候依赖calibre。 所以我们要先安装calibre。
 命令行形式：
@@ -54,12 +54,13 @@ gitbook以PDF形式导出的时候依赖calibre。 所以我们要先安装calib
 安装成功后，要执行下面的命令，把ebook-convert 加到路径里。
 `$ sudo ln -s ~/Applications/calibre.app/Contents/MacOS/ebook-convert /usr/bin`
 成功之后，就可以导出PDF了。
-$ gitbook pdf
+$ gitbook pdf  
+
 #### 6. 封面。
 图书当然要有封面了。
 在根目录下面放一个名为cover.jpg，大小为1800x2360 像素的jpg格式图片，就可以在生成的时候，将封面加在PDF前面了。
 
-7.配置。
+#### 7.配置。
 gitbook有很多配置。我们这里只说我们用到的配置。
 配置文件的名字为book.json。
 内容如下：
