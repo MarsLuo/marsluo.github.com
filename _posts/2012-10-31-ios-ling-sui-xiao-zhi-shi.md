@@ -5,7 +5,7 @@ description: ""
 categories: 工匠梦
 tags: [iOS]
 ---
- 
+
 
 ##### 使应用不会自动锁屏。  
 
@@ -22,10 +22,10 @@ iOS程序build到手机上时，默认的桌面图标是有高亮的光圈效果
 	BOOL retina = CGSizeEqualToSize(CGSizeMake(640, 960), [[UIScreen mainScreen] currentMode].size);  
 	返回true说明当前分辨率是CGSizeMake(640, 960)，false则不是。  
 
-	
+
 ##### 错误警告1
 
-类似这样的错误failed to get the task for process XXX多半是证书问题，project和targets证书都要是可用并且正确的证书才行。 
+类似这样的错误failed to get the task for process XXX多半是证书问题，project和targets证书都要是可用并且正确的证书才行。
 
 ##### 错误警告2  
 出现这样的问题Property's synthesized getter follows Cocoa naming convention for returning Property's synthesized getter follows Cocoa naming convention for returning.  
@@ -59,7 +59,7 @@ iOS程序build到手机上时，默认的桌面图标是有高亮的光圈效果
 	[UIImage imageNamed:@"myImage2.png"],
 	[UIImage imageNamed:@"myImage3.png"],
 	[UIImage imageNamed:@"myImage4.gif"],nil];  
-	UIImageView *myAnimatedView = [UIImageView alloc]; 
+	UIImageView *myAnimatedView = [UIImageView alloc];
 	[myAnimatedView initWithFrame:[self bounds]];  
 	myAnimatedView.animationImages = myImages;  
 	myAnimatedView.animationDuration = 0.25; // seconds  
@@ -81,12 +81,12 @@ iOS程序build到手机上时，默认的桌面图标是有高亮的光圈效果
 
 	//恢复之前的页面：  
 		[self dismissModalViewControllerAnimated:YES];
-		
+
 
 ##### 为UIImageView添加单击事件：  
 
 	imageView.userInteractionEnabled = YES;  
-		 
+
 	UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(yourHandlingCode:)];
 	[imageView addGestureRecognizer:singleTap];  
 
@@ -95,7 +95,7 @@ iOS程序build到手机上时，默认的桌面图标是有高亮的光圈效果
 	NSDictionary *infoDict =[[NSBundle mainBundle] infoDictionary];  
 	NSString *versionNum =[infoDict objectForKey:@"CFBundleVersion"];  
 	NSString *appName =[infoDict objectForKey:@"CFBundleDisplayName"];    
-	
+
 ##### 给图片加圆角
 
 	// 给view 设置圆角
@@ -103,9 +103,9 @@ iOS程序build到手机上时，默认的桌面图标是有高亮的光圈效果
     view.layer.cornerRadius = 6.0; // 圆角弧度
     view.layer.borderWidth = 1.0; // 边界宽度
     view.layer.borderColor = [[UIColor whiteColor] CGColor];  // 边界颜色
-    
+
 ##### 键盘弹出，但无法输入
-	// 有可能是键盘所在的window不是当前的key window 
+	// 有可能是键盘所在的window不是当前的key window
 	if (!m_searchBar.window.isKeyWindow){
         [m_searchBar.window makeKeyAndVisible];
     }

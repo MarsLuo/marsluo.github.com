@@ -53,15 +53,15 @@ if __name__ == '__main__':
 
     root="you project path"
     traversalFiles(root)
-    
+
 ~~~
 
-####使用方式
+#### 使用方式
 
 首先将上述代码保存为SearchChinese27.py，再将其中` root="you project path" `中your project path 替换为你项目的路径，最好为绝对路径。
 然后在命令行里输入`python SearchChinese27.py`，就会在命令行里看到相应中文的位置和行数了。
 
-####使用示例
+#### 使用示例
 
 ~~~
 lineNumber:175 matchString:            returnString = @"昨天"; // 昨天
@@ -70,8 +70,6 @@ lineNumber:247 matchString:                [dateFormatter setDateFormat:@"明天
 fileName:/Users/yluo/Git/zl-ios/Cicada/Cicada/Cicada/Class/Tools/NSString+Tools.m
 ~~~
 
-####源码下载
+#### 源码下载
 
 相应的源码也可以在[这里](https://github.com/MarsLuo/PythonTools)下载到。
-
-

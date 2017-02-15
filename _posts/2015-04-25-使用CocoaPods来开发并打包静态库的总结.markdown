@@ -13,14 +13,14 @@ tags: [iOS, CocoaPods]
 
 参照brycezhang的[使用CocoaPods开发并打包静态库](http://www.cnblogs.com/brycezhang/p/4117180.html)这篇文章，我完成了一些初始工作，但是遇到了很多问题，导致打出来的静态库，没有办法编译，现在将这些问题总结一下。
 
-###在打包之前请务必用`pod lib lint`命令检查下，自己的项目有没有问题。    
+### 在打包之前请务必用`pod lib lint`命令检查下，自己的项目有没有问题。    
 我之前就是花了很多时间打包，重试，找问题，但是都找不到点上，使用`pod lib lint` 命令检查后，迅速发现了自己的问题之所在。顺利的完成了打包的工作。    
 
-###其实绝大多数问题都是因为podspec文件写的有问题导致的。 
-   
+### 其实绝大多数问题都是因为podspec文件写的有问题导致的。 
+
 #### 1. 需要把项目所有的一级依赖全都写在podspec文件里，我在项目用到了4个第三方库，所以就需要把这四个都列出来。   
- 
-	s.dependency 'Mantle'	
+
+	s.dependency 'Mantle'
 	s.dependency 'AFNetworking'
 	s.dependency 'JSONFunction'
 	s.dependency 'FMDB'
@@ -44,4 +44,3 @@ tags: [iOS, CocoaPods]
 
 	pod lib lint TJMessage.podspec --verbose
 	pod package TJMessage.podspec    
-	

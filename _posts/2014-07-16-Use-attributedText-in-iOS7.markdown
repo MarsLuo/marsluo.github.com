@@ -15,9 +15,9 @@ tags: [iOS]
 jason的demo为：
 
 	NSURL *url = [[NSBundle mainBundle] URLForResource:@"text" withExtension:@"html"];
-    NSAttributedString *attrStr = 
+    NSAttributedString *attrStr =
     [[NSAttributedString alloc]
-    	initWithFileURL:url 
+    	initWithFileURL:url
     	options:@{NSDocumentTypeDocumentAttribute:NSHTMLTextDocumentType}
     	documentAttributes:nil error:nil];
     [_textView setAttributedText:attrStr];
@@ -29,14 +29,14 @@ HTML文件为：
 	<div style="background-color:lightgrey;
     font-size:14px;
     color:#304182;
-    text-align:center; 
+    text-align:center;
     margin-left:5px;
     padding-right:5px">
 	<p>Hi
 		<span style="font-size:18px; color:#E88834;">
 			Taobao
 		</span>
-        
+
 		<img src="hufeng.png" height="32" width="32" />
         <p> 静态图片
 		<img src="taobao.gif" height="32" width="52">
@@ -67,19 +67,18 @@ HTML文件为：
 
 加上`file://`就可以正常显示了。
 
-	NSString *path = 
+	NSString *path =
 	[[NSBundle mainBundle] pathForResource:@"expression_first_1@2x" ofType:@"png"];
     path = [NSString stringWithFormat:@"file://%@",path];
-    
-    NSString *dataString = 
+
+    NSString *dataString =
     [NSString stringWithFormat:
     @"<meta charset=\"UTF-8\">我右边的是图片:"
      "<img src=\"%@\" height=\"15\" width=\"15\"/>:"
      "我左边的也是图片", path];
 
-    NSAttributedString *attrStr = 
+    NSAttributedString *attrStr =
     [[NSAttributedString alloc]
     initWithData:[dataString dataUsingEncoding:NSUTF8StringEncoding]
     options:@{NSDocumentTypeDocumentAttribute:NSHTMLTextDocumentType}
     documentAttributes:nil error:nil];
-

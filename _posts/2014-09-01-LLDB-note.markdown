@@ -10,39 +10,39 @@ tags: [iOS]
 
 在程序Crash或者进入断点的时候，可以在控制台输入如下命令，来实现一些特殊的功能：  
 
-####bt 
+#### bt
 - 打印当前进程调用栈
 - 示例：
 	`bt`
 
-####po 
+#### po
 - 打印当前Object-C对象的描述  
 - 示例：  
 	`po [self view]`  
 	`po [[NSString alloc] initWithFormat:@"Item index is: %d", index]`  
 	`po [self recursiveDescription]` //打印视图树
-	
-####p 
+
+#### p
 - 打印当前基本类型的描述  
 - 示例：  
 	`p (int)[[[self view] subviews] count]`  
-	
-####expr
+
+#### expr
 - 可以在调试时动态执行指定表达式，并将结果打印出来，还可以改变指定变量的值
 - 示例：  
 	`expr username = @"username"`
-	
-####call  
+
+#### call  
 - 可以调用当前上下文的方法
 - 示例：  
 	`call [self.view setBackgroundColor:[UIColor redColor]]`
-	
-####image
+
+#### image
 - 用于寻址，有多个命令
 - 示例：  
 	`image lookup --address 0x0000000100004af8`  查看指定地址的栈信息  
 	`image lookup --type Point` 查看指定地址的类型信息
-	
+
 相关文章：  
  [Xcode的控制台调试命令](http://blog.csdn.net/likendsl/article/details/7576549)  
  [LLDB调试命令初探](http://www.starfelix.com/blog/2014/03/17/lldbdiao-shi-ming-ling-chu-tan/)  
