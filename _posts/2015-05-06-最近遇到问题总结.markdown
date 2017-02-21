@@ -2,7 +2,7 @@
 layout: post  
 title:  "最近遇到问题总结"  
 date:   2015-05-06 22:01:03  
-categories: 工匠梦  
+categories: CodeArtisan  
 tags: [iOS, Tips]  
 ---
 

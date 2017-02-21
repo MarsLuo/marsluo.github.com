@@ -2,7 +2,7 @@
 layout: post
 title:  "iOS平台处理通话时，对UI的影响"
 date:   2014-08-07 18:00:00
-categories: 工匠梦
+categories: CodeArtisan
 tags: [iOS]
 ---
 

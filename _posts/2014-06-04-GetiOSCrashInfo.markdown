@@ -3,7 +3,7 @@ layout: post
 title:  "分析iOS Crash 文件"  
 date:   2014-06-04 18:00:00  
 categories: Xcode iOS Crash  
-tags: [工匠梦]
+tags: [CodeArtisan]
 ---
 
 最近在开发的时候，遇到了一个Crash的现象。但是这个现象只能在客户的手机上出现。  

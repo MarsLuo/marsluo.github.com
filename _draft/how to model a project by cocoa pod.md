@@ -2,7 +2,7 @@
 layout: post  
 title:  "如何使用Cocoapod 构建模块化项目"  
 date:   2016-05-31 11:37:07
-categories: 工匠梦  
+categories: CodeArtisan  
 tags: [iOS, Tips]  
 ---
 

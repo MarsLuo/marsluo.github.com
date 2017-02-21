@@ -2,7 +2,7 @@
 layout: post
 title:  "如何自定义隐私提醒"
 date:   2014-07-24 18:00:00
-categories: 工匠梦
+categories: CodeArtisan
 tags: [iOS]
 ---
 

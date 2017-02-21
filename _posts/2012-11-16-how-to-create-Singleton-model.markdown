@@ -2,7 +2,7 @@
 layout: post
 title:  "iOS 创建单例的两种方法"
 date:   2012-11-16 14:58:43
-categories: 工匠梦
+categories: CodeArtisan
 tags: [iOS]
 ---
 

@@ -2,7 +2,7 @@
 layout: post
 title: "iOS 关于蓝牙开发的相关知识"
 description: ""
-categories: 工匠梦
+categories: CodeArtisan
 tags: [iOS, buletooth]
 ---
 
