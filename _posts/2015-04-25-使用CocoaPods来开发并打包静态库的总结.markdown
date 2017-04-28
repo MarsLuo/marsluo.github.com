@@ -2,6 +2,7 @@
 layout: post  
 title:  "使用CocoaPods来开发并打包静态库的总结"  
 date:   2015-04-25 13:48:40  
+comments: ture
 categories: CodeArtisan  
 tags: [iOS, CocoaPods]  
 ---

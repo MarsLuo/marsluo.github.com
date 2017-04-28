@@ -2,6 +2,7 @@
 layout: post  
 title:  "使用gitbook心得小记"  
 date:   2017-02-10 14:26:41  
+comments: ture
 categories: CodeArtisan  
 tags: [gitbook, Tips]  
 ---
