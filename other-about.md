@@ -18,7 +18,7 @@ permalink: /about/
  - 骆杨/男/1988  
  - 硕士/西安电子科技大学 计算机科学与技术  
  - 本科/陕西科技大学 网络工程  
- - 工作年限：6年  
+ - 工作年限：10年  
  - 技术博客：http://blog.marsluo.com
  - Github：http://github.com/MarsLuo
  

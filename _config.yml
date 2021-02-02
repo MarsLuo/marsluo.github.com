@@ -10,4 +10,10 @@ username: MarsLuo
 markdown: kramdown
 permalink: pretty
 paginate: 15
-gems: [jekyll-paginate]
+gems: [jekyll-paginate, jekyll-archives]
+
+# Archives
+collections:
+  archives:
+    output: true
+    permalink: /archives/:path/
