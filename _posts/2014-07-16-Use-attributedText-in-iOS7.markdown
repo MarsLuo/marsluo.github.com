@@ -2,7 +2,7 @@
 layout: post
 title:  "在iOS7中使用html来做图文混排"
 date:   2014-07-16 18:00:00
-categories: CodeArtisan
+categories: Notes
 tags: [iOS]
 ---
 

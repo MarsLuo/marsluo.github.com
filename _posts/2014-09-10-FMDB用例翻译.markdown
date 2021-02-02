@@ -2,7 +2,7 @@
 layout: post  
 title:  "FMDB用例分析"  
 date:   2014-09-10 18:00:00  
-categories: CodeArtisan  
+categories: Notes  
 tags: [iOS]  
 ---
 
@@ -249,7 +249,7 @@ FMDB有三个主要的类：
 
 **注意：** 这意味着`FMDatabaseQueue`的方法是block化的。所以就算你传递了语句块，他们也不会在另外一个线程里执行。
 
-##基于Block自定义SQLite函数
+## 基于Block自定义SQLite函数
 
 你可以这样做的！举个例子，去main.m看看`makeFunctionNamed:`：  
 （我给搬到下面了。）

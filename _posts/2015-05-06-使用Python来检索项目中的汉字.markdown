@@ -3,7 +3,7 @@ layout: post
 title:  "使用Python来检索iOS项目中的汉字"  
 date:   2015-05-06 21:05:15  
 comments: ture
-categories: CodeArtisan  
+categories: Notes  
 tags: [iOS, Python]  
 ---
 

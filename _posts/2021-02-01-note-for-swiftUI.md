@@ -3,8 +3,8 @@ layout: post
 title:  "SwiftUI 笔记"  
 date:   2021-02-02 15:40:13
 comments: ture
-categories: CodeArtisan  
-tags: [SwiftUI, Note]  
+categories: tips  
+tags: [SwiftUI]  
 ---
 
 最近在学习SwifUI，发现这个开发的模式，和UIKit相差还是很远的，以下记录一下开发中遇到的问题。

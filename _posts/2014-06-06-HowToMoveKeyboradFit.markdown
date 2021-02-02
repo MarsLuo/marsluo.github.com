@@ -2,7 +2,7 @@
 layout: post
 title:  "在iOS上如何正确的调整键盘和输入框的距离"
 date:   2014-06-06 11:25:50
-categories: CodeArtisan
+categories: tips
 tags: [iOS]
 ---
 在做iOS开发时，经常会用到键盘。  

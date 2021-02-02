@@ -3,7 +3,7 @@ layout: post
 title:  "最近遇到问题总结"  
 date:   2015-05-06 22:01:03  
 comments: ture
-categories: CodeArtisan  
+categories: tips  
 tags: [iOS, Tips]  
 ---
 

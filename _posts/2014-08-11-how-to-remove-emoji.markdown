@@ -2,7 +2,7 @@
 layout: post
 title:  "怎么辨别并移除iOS用户输入的emoji表情"
 date:   2014-08-11 18:00:00
-categories: CodeArtisan
+categories: tips
 tags: [iOS]
 ---
 

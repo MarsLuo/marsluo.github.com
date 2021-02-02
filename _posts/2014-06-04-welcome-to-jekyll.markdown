@@ -2,7 +2,7 @@
 layout: post
 title:  "Welcome to Jekyll!"
 date:   2014-06-04 14:40:00
-categories: jekyll update
+categories: log
 ---
 
 ## 我之前试用了一下Hexo。发现还是没有Jekyll好用。然后又切换回来了。

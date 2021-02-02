@@ -2,7 +2,7 @@
 layout: post
 title:  "如何在Jekyll里加图片"
 date:   2014-07-24 22:00:00
-categories: CodeArtisan
+categories: log
 tags: [Jekyll]
 ---
 

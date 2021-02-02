@@ -2,7 +2,7 @@
 layout: post
 title:  "Node.js 学习笔记04－如何持久化数据"
 date:   2014-06-07 10:03:39
-categories: CodeArtisan
+categories: Notes
 tags: [Node.js]
 ---
 
