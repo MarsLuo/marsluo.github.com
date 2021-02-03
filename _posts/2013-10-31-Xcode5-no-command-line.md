@@ -2,7 +2,7 @@
 layout: post
 title: "新装的Xcode5没有command line的问题"
 description: ""
-categories: log
+categoriesLog
 tags: [iOS, Xcode]
 ---
 

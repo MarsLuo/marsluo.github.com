@@ -3,7 +3,7 @@ layout: post
 title:  "SwiftUI 笔记"  
 date:   2021-02-02 15:40:13
 comments: ture
-categories: tips  
+categories: Tips  
 tags: [SwiftUI]  
 ---
 

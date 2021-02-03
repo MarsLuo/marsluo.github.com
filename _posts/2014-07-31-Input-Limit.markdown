@@ -2,7 +2,7 @@
 layout: post
 title:  "iOS开发中限制TextField只能输入数字和限制输入长度的办法"
 date:   2014-07-31 18:00:00
-categories: tips
+categories: Tips
 tags: [iOS]
 ---
 

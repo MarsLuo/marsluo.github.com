@@ -2,7 +2,7 @@
 layout: post
 title: "iOS零碎小知识"
 description: ""
-categories: tips
+categories: Tips
 tags: [iOS]
 ---
 

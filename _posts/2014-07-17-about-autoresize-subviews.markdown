@@ -2,7 +2,7 @@
 layout: post
 title:  "关于使用IB时，Autoresize Subviews的坑"
 date:   2014-07-17 18:00:00
-categories: log
+categoriesLog
 tags: [iOS]
 ---
 

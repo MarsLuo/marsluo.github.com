@@ -2,7 +2,7 @@
 layout: post
 title: "解决jekyll markdown中文解析有误的问题"
 description: ""
-categories: log
+categoriesLog
 tags: [blog, Jekyll]
 ---
 

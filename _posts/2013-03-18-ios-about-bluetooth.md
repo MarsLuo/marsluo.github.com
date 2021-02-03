@@ -2,7 +2,7 @@
 layout: post
 title: "iOS 关于蓝牙开发的相关知识"
 description: ""
-categories: tips
+categories: Tips
 tags: [iOS, buletooth]
 ---
 

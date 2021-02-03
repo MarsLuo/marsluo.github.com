@@ -2,7 +2,7 @@
 layout: post
 title: "Sublime Text2 使用技巧"
 description: ""
-categories: tips
+categories: Tips
 tags: [HTML, Sublime]
 ---
 

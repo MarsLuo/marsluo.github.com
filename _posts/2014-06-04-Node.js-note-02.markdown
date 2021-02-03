@@ -2,7 +2,7 @@
 layout: post
 title:  "Node.js 学习笔记02－Http的响应操作"
 date:   2014-06-04 22:27:00
-categories: log
+categoriesLog
 tags: [Node.js]
 ---
 第3章和第4章主要介绍了Node.js的一些基本思想，例如Node.js是异步执行的，基本以执行，回调为主等等。  

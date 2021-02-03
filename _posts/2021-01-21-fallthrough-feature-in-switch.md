@@ -3,7 +3,7 @@ layout: post
 title:  "Swift Switch 的fallthrough"  
 date:   2021-01-21 11:33:49
 comments: ture
-categories: tips  
+categories: Tips  
 tags: [Swift, Tips]  
 ---
 

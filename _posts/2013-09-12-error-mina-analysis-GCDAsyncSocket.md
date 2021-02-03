@@ -2,7 +2,7 @@
 layout: post
 title: "mina解析GCDAsyncSocket发送的消息时无法解析"
 description: ""
-categories: log
+categoriesLog
 tags: [iOS, GCDAsyncSocket, mina, socket]
 ---
 

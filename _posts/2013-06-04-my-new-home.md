@@ -2,7 +2,7 @@
 layout: post
 title: "我的新家"
 description: "介绍如何使用Jekyll Bootstrap构建个人博客"
-categories: log
+categoriesLog
 tags: [Jekyll, blog]
 ---
 
