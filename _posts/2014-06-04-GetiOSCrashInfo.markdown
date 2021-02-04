@@ -2,7 +2,7 @@
 layout: post  
 title:  "分析iOS Crash 文件"  
 date:   2014-06-04 18:00:00  
-categoriesLog
+categories: Log
 tags: [iOS]
 ---
 

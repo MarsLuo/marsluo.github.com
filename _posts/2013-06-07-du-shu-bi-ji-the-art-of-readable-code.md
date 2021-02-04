@@ -2,7 +2,7 @@
 layout: post
 title: "读书笔记：编写可读写代码的艺术"
 description: "The Art of Readable Code"
-categoriesLog
+categories: Log
 tags: [读书笔记]
 ---
 

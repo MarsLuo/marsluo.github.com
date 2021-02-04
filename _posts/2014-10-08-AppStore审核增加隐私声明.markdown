@@ -2,7 +2,7 @@
 layout: post  
 title:  "AppStore审核增加隐私声明"  
 date:   2014-10-08 18:00:00  
-categoriesLog  
+categories: Log  
 tags: [iOS]  
 ---
 Resolution Center  
