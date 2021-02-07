@@ -33,8 +33,6 @@ ForEach(dict.sorted(by: {$0.key > $1.key}), id: \.key) { item in
 }
 ```
 
-
-
 ### 2. 如何在Picker中使用字典
 
 我们往常使用Picker时，如果需要便利的集合是数组，那可以写作下面这种形式：
@@ -60,3 +58,7 @@ Picker("Value", selection: $selection) {
 ```
 
 使用tag将对应的指和Picker关联起来。
+
+### 3. Color的本质
+
+Color在SwiftUI中，本质上就是View。 它会像View一样自动占用所有可用空间。也可以用.frame()来改编他的大小。

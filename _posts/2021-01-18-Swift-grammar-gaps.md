@@ -60,4 +60,14 @@ outerLoop: for i in 1...10 {
 }
 ```
 
+### 4. 如果要struct的方法需要修改struct内部的变量值， 该方法需要用mutating标记
+
+### 5. shuffled
+Swift 为 Array提供了shuffled方法，可以返回经过洗牌的数组。
+```
+var countries = ["Estonia", "France", "Germany", "Ireland", "Italy", "Nigeria", "Poland", "Russia", "Spain", "UK", "US"].shuffled()
+```
+
+
+
 
