@@ -59,6 +59,19 @@ Picker("Value", selection: $selection) {
 
 使用tag将对应的指和Picker关联起来。
 
-### 3. Color的本质
+### 3. View
+在SwiftUI中，View不再是一个对象，而是一个协议。任何符合这个协议的结构体，都可以被渲染为屏幕上的视图。 所以我们不能在SwifUI中，直接使用一个View。
+modifier 本质上是返回了一个新的View（Struct）。
+
+### 4. Color的本质
 
 Color在SwiftUI中，本质上就是View。 它会像View一样自动占用所有可用空间。也可以用.frame()来改编他的大小。
+
+### 5.  单个叶子节点的数量
+在SwiftUI中，单个元素的叶子节点不能多于10个，否则会报错“Extra argument in call”， 如果需要展示多于10个组件，可以使用Group组件。
+
+### 6. State
+
+State 本质是双向绑定。
+
+
