@@ -64,14 +64,49 @@ Picker("Value", selection: $selection) {
 modifier 本质上是返回了一个新的View（Struct）。
 
 ### 4. Color的本质
-
 Color在SwiftUI中，本质上就是View。 它会像View一样自动占用所有可用空间。也可以用.frame()来改编他的大小。
 
 ### 5.  单个叶子节点的数量
 在SwiftUI中，单个元素的叶子节点不能多于10个，否则会报错“Extra argument in call”， 如果需要展示多于10个组件，可以使用Group组件。
 
-### 6. State
+```
+@frozen public struct VStack<Content> : View where Content : View {
 
+    /// Creates an instance with the given spacing and horizontal alignment.
+    ///
+    /// - Parameters:
+    ///   - alignment: The guide for aligning the subviews in this stack. This
+    ///     guide has the same vertical screen coordinate for every child view.
+    ///   - spacing: The distance between adjacent subviews, or `nil` if you
+    ///     want the stack to choose a default distance for each pair of
+    ///     subviews.
+    ///   - content: A view builder that creates the content of this stack.
+    @inlinable public init(alignment: HorizontalAlignment = .center, spacing: CGFloat? = nil, @ViewBuilder content: () -> Content)
+
+    /// The type of view representing the body of this view.
+    ///
+    /// When you create a custom view, Swift infers this type from your
+    /// implementation of the required `body` property.
+    public typealias Body = Never
+}
+```
+
+如上述代码所示，所有的SwiftUI组件在构建时，都会用到ViewBuilder。 ViewBuilder把我们输入的View变成了最终需要绘制的视图。
+
+```
+@available(iOS 13.0, macOS 10.15, tvOS 13.0, watchOS 6.0, *)
+extension ViewBuilder {
+
+    public static func buildBlock<C0, C1, C2, C3, C4, C5, C6, C7, C8, C9>(_ c0: C0, _ c1: C1, _ c2: C2, _ c3: C3, _ c4: C4, _ c5: C5, _ c6: C6, _ c7: C7, _ c8: C8, _ c9: C9) -> TupleView<(C0, C1, C2, C3, C4, C5, C6, C7, C8, C9)> where C0 : View, C1 : View, C2 : View, C3 : View, C4 : View, C5 : View, C6 : View, C7 : View, C8 : View, C9 : View
+}
+```
+这是ViewBuilder参数最多的一个extension，我们看到，这个只有10个，所以在SwiftUI中，容器类型最多可以放10个View。
+
+### 6. State
 State 本质是双向绑定。
 
+### 7. Modifier
 
+
+参考： 
+[SwiftUI之ViewModifier详解](https://zhuanlan.zhihu.com/p/148780922)
