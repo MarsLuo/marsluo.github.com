@@ -6,5 +6,7 @@ comments: ture
 categories: Notes  
 tags: [SwiftUI]  
 ---
-如何自定义modifiers
+如何在ViewModifier 上增加track， action等？
+
 如何自定义View
+
