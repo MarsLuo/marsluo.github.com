@@ -105,6 +105,35 @@ Text("Hello, world!")
 
 上面就是一个反例，[bold()](https://developer.apple.com/documentation/swiftui/text/bold())是Text的特定修饰符，仅能作用于Text；当Text被`padding()` 修饰后，类型就变成了View，便不能在使用`.bold() `进行修饰了。 如果一定要用，那就需要将两个调用顺序做个调整。
 
+当然，ViewModifier也可以传参数使用。如下所示：
+
+```swift
+struct Watermark: ViewModifier {
+    var text: String
+    
+    func body(content: Content) -> some View {
+        ZStack(alignment: .bottomTrailing) {
+            content
+            Text(text)
+                .font(.caption)
+                .foregroundColor(.white)
+                .padding(5)
+                .background(Color.black)
+        }
+    }
+}
+
+struct ContentView: View {
+    var body: some View {
+      Color.blue
+      		.frame(width: 300, height: 200)
+          .watermarked(with: "Hacking with Swift")
+    }
+}
+```
+
+
+
 参考：
 
 [Configuring Views](https://developer.apple.com/documentation/swiftui/configuring-views)
