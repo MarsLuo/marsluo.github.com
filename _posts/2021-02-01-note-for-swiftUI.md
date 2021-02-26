@@ -105,8 +105,6 @@ extension ViewBuilder {
 ### 6. State
 State 本质是双向绑定。
 
-### 7. Modifier
-
 
 参考： 
 [SwiftUI之ViewModifier详解](https://zhuanlan.zhihu.com/p/148780922)
